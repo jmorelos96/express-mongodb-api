@@ -15,7 +15,7 @@ const find = ({type, limit}) => {
 
 const getByDate = async ({type, startDate, endDate, limit}) => {
     const dbConnect = dbo.getDb();
-    return new Promise((resolve, reject) => {
+    return new Promise( async (resolve, reject) => {
         const data = dbConnect.collection(process.env.MONGO_COLLECTION).find({
             date: {$gte: new Date(startDate), $lt: new Date(endDate)},
             type: type,

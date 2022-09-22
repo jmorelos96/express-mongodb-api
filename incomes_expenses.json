@@ -1,0 +1,85 @@
+[{
+  "_id": {
+    "$oid": "6308dba4779fb58e44d9d5e7"
+  },
+  "desc": "payment to credit card",
+  "type": "expense",
+  "amount": -6500,
+  "date": {
+    "$date": {
+      "$numberLong": "1656720000000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "6308dba4779fb58e44d9d5ec"
+  },
+  "desc": "water services payment",
+  "type": "expense",
+  "amount": -928,
+  "date": {
+    "$date": {
+      "$numberLong": "1657152000000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "6308dba4779fb58e44d9d608"
+  },
+  "desc": "internet payment",
+  "type": "expense",
+  "amount": -600,
+  "date": {
+    "$date": {
+      "$numberLong": "1659571200000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "6308dba4779fb58e44d9d61c"
+  },
+  "desc": "gas expense",
+  "type": "expense",
+  "amount": -2000,
+  "date": {
+    "$date": {
+      "$numberLong": "1661126400000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "6308dba4779fb58e44d9d5f1"
+  },
+  "desc": "food from restaurant 2",
+  "type": "expense",
+  "amount": -400,
+  "date": {
+    "$date": {
+      "$numberLong": "1657238400000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "6308dba4779fb58e44d9d5f6"
+  },
+  "desc": "payment 2 out 2",
+  "type": "income",
+  "amount": 14700,
+  "date": {
+    "$date": {
+      "$numberLong": "1657843200000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "6308dba4779fb58e44d9d5e5"
+  },
+  "desc": "payment to credit card",
+  "type": "expense",
+  "amount": -1876,
+  "date": {
+    "$date": {
+      "$numberLong": "1656547200000"
+    }
+  }
+}]
