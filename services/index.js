@@ -101,10 +101,9 @@ const update = (data) => {
  * @param {*} type 
  * @param {*} id 
  */
-const deletes = (id, type = null) => {
+const deletes = (id) => {
     const dbConnect = dbo.getDb();
     return new Promise((resolve, reject) => {
-        if(!type) reject(new Error("There is not type"));
         if(!id) reject(new Error("There is not id"));
         try{
             let res = dbConnect.collection(process.env.MONGO_COLLECTION).deleteOne({"_id": id})
