@@ -65,11 +65,10 @@ const insert = (records) => {
             }else{
                 res = dbConnect.collection(process.env.MONGO_COLLECTION).insertMany(records)
             }
-            console.log(res);
+            resolve(res);
         }catch(e){
             reject(e)
         }
-        resolve(1);
     })
 }
 
@@ -80,21 +79,20 @@ const insert = (records) => {
  * @param {*} data 
  * @returns 
  */
-const update = (id, data) => {
+const update = (data) => {
     const dbConnect = dbo.getDb();
     return new Promise((resolve, reject) => {
-        if(!id) reject(new Error("There is not an id"));
         if(!data) reject(new Error("There is not data"));
+        if(!data.id) reject(new Error("There is not an id"));
         try{
             const res = dbConnect.collection(process.env.MONGO_COLLECTION).updateOne(
-                {"_id": id},
+                {"_id": data.id},
                 {$set: data }
             );
-            console.log(res);
+            resolve(res);
         }catch(e){
             reject(e)
         }
-        resolve(1)
     })
 }
 
@@ -109,15 +107,16 @@ const deletes = (id, type = null) => {
         if(!type) reject(new Error("There is not type"));
         if(!id) reject(new Error("There is not id"));
         try{
+            let res;
             if(type){
-                dbConnect.collection(process.env.MONGO_COLLECTION).deleteMany({"_id": id, type})
+                res = dbConnect.collection(process.env.MONGO_COLLECTION).deleteMany({"_id": id, type})
             }else{
-                dbConnect.collection(process.env.MONGO_COLLECTION).deleteOne({"_id": id})
+                res = dbConnect.collection(process.env.MONGO_COLLECTION).deleteOne({"_id": id})
             }
+            resolve(res);
         }catch(e){
             reject(e)
         }
-        resolve(1);
     })
 }
 
