@@ -1,6 +1,7 @@
 const dotenv = require('dotenv');
 const express = require('express');
 const cors = require('cors');
+const errors = require("./api/errors");
 dotenv.config();
 
 const dbo = require('./connections');
@@ -15,7 +16,7 @@ app.use(express.json());
 // Global error handling
 app.use(function (err, _req, res) {
   console.error(err);
-  res();
+  res.send(errors.messages(null, err)[500]);
 });
 
 app.use('/api/income',api);
