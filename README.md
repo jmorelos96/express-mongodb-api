@@ -21,8 +21,8 @@ in both cases it will allow you to add, update, remove and to get between some d
 | HTTP          | URL               | Action                    | Params            |
 | ------------- | -------------     | ------------              |------------       |
 | GET           | api/``${parm}``/      | Get all the incomes or expenses       |  N/A              |
-| GET           | api/``${parm}``/date  | Get incomes between dates |  Params: **startDate**=YYYY-MM-DD, **endDate**=YYYY-MM-DD |
-| GET           | api/``${parm}``/getByDays   |Get the last *n* days. **Max: 30 days**|Params: **days** as integer|
+| GET           | api/``${parm}``/date  | Get incomes between dates |  Params: **startDate**=YYYY-MM-DD, **endDate**=YYYY-MM-DD *as string* |
+| GET           | api/``${parm}``/getByDays   |Get the last *n* days. **Max: 30 days**|Params: **days**= 3 *as integer*|
 | POST           | api/``${parm}``   |It can add one or many incomes/expenses as you like.|``body: {data: object}``|
 | PUT           | api/``${parm}``   |It can update one income or expense.|``body: { data: object }``|
-| DELETE           | api/``${parm}``   |It can delete one income or expense.| Param: **id**="507f191e810c19729de860ea" |
+| DELETE           | api/``${parm}``   |It can delete one income or expense.| Param: **id**="507f191e810c19729de860ea" *as string* |

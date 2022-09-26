@@ -107,12 +107,7 @@ const deletes = (id, type = null) => {
         if(!type) reject(new Error("There is not type"));
         if(!id) reject(new Error("There is not id"));
         try{
-            let res;
-            if(type){
-                res = dbConnect.collection(process.env.MONGO_COLLECTION).deleteMany({"_id": id, type})
-            }else{
-                res = dbConnect.collection(process.env.MONGO_COLLECTION).deleteOne({"_id": id})
-            }
+            let res = dbConnect.collection(process.env.MONGO_COLLECTION).deleteOne({"_id": id})
             resolve(res);
         }catch(e){
             reject(e)
