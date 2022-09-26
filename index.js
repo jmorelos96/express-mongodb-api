@@ -18,7 +18,8 @@ app.use(function (err, _req, res) {
   res();
 });
 
-app.use('/api',api);
+app.use('/api/income',api);
+app.use('/api/expense',api);
 
 dbo.connectToServer(function (err) {
   if (err) {

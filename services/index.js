@@ -54,14 +54,20 @@ const getByDate = async ({type, startDate, endDate, limit}) => {
  * @param {*} records 
  * @returns 
  */
-const insert = (type, records) => {
+const insert = (records) => {
     const dbConnect = dbo.getDb();
     return new Promise((resolve, reject) => {
-        if(!elem || elem.length == 0) reject(new Error("Data invalid"));
-        if(elem.length > 1){
-            dbConnect.collection(process.env.MONGO_COLLECTION).insertOne(records[0])
-        }else{
-            dbConnect.collection(process.env.MONGO_COLLECTION).insertMany(records)
+        if(!records || records.length == 0) reject(new Error("There is not records"));
+        let res;
+        try{
+            if(records.length > 1){
+                res = dbConnect.collection(process.env.MONGO_COLLECTION).insertOne(records[0])
+            }else{
+                res = dbConnect.collection(process.env.MONGO_COLLECTION).insertMany(records)
+            }
+            console.log(res);
+        }catch(e){
+            reject(e)
         }
         resolve(1);
     })
@@ -74,21 +80,45 @@ const insert = (type, records) => {
  * @param {*} data 
  * @returns 
  */
-const update = (type, id, data) => {
+const update = (id, data) => {
     const dbConnect = dbo.getDb();
     return new Promise((resolve, reject) => {
-        if(!data) reject("No data")
-        const res = dbConnect.collection(process.env.MONGO_COLLECTION).updateOne(
-            {"_id": id},
-            {$set: data }
-        );
-        console.log(res);
+        if(!id) reject(new Error("There is not an id"));
+        if(!data) reject(new Error("There is not data"));
+        try{
+            const res = dbConnect.collection(process.env.MONGO_COLLECTION).updateOne(
+                {"_id": id},
+                {$set: data }
+            );
+            console.log(res);
+        }catch(e){
+            reject(e)
+        }
         resolve(1)
     })
 }
 
-const deletes = () => {
-
+/**
+ * 
+ * @param {*} type 
+ * @param {*} id 
+ */
+const deletes = (id, type = null) => {
+    const dbConnect = dbo.getDb();
+    return new Promise((resolve, reject) => {
+        if(!type) reject(new Error("There is not type"));
+        if(!id) reject(new Error("There is not id"));
+        try{
+            if(type){
+                dbConnect.collection(process.env.MONGO_COLLECTION).deleteMany({"_id": id, type})
+            }else{
+                dbConnect.collection(process.env.MONGO_COLLECTION).deleteOne({"_id": id})
+            }
+        }catch(e){
+            reject(e)
+        }
+        resolve(1);
+    })
 }
 
 module.exports = {
